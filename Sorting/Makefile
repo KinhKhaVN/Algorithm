@@ -6,9 +6,9 @@ SHELL := powershell.exe
 TARGET = main.exe
 
 SRCS = $(wildcard *.cpp)
-OBJS = $(SRCS: .cpp = .o)
+OBJS = $(SRCS:.cpp=.o)
 
-all = $(TARGET)
+all: $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(CXX) -o $@ $^
