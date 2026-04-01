@@ -5,14 +5,19 @@ SHELL := powershell.exe
 
 TARGET = main.exe
 
-OBJS = *.o
+SRCS = $(wildcard *.cpp)
+OBJS = $(SRCS: .cpp = .o)
 
 all = $(TARGET)
 
+$(TARGET): $(OBJS)
+	$(CXX) -o $@ $^
 
-
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 run:
+	./$(TARGET)
 
 
 clean:
