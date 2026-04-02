@@ -3,18 +3,10 @@
 
 #include <functional>
 
-using compare = std::function<bool (*) (void*, void*)>;
+typedef std::function<bool (int, int)> Compare;
 
-template <class T>
-bool greater(void * left, void * right)
-{
-  return *( (T*) left ) > *( (T*) right );
-}
+bool greater(int left, int right);
 
-template <class T>
-bool less(void * left, void * right)
-{
-  return *( (T*) left ) < *( (T*) right );
-}
+bool less(int left, int right);
 
 #endif
