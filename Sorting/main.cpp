@@ -21,7 +21,7 @@ int main () {
   std::vector<SortStragety *> algorithms;
   algorithms.push_back(&bubbleSort);
   
-  algorithms[0]->Sort(data, greater);
+  algorithms[0]->Sort(data);
 
   data.Print();
 

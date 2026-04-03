@@ -11,7 +11,7 @@ class SortStragety
   public:
     SortStragety(const char * title): title(title) {}
     virtual ~SortStragety() {}
-    virtual void Sort(Data data, Compare compare) = 0;
+    virtual void Sort(Data data, Compare compare = greater) = 0;
     
 };
 
