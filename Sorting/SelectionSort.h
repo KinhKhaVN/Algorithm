@@ -1,12 +1,12 @@
 #ifndef SELECTIONSORT_H
 #define SELECTIONSORT_H
 
-class SelectionSort
+#include "SortStragety.h"
+class SelectionSort: public SortStragety
 {
   public:
-
-  public:
-
+    SelectionSort(): SortStragety("Selection Sort") {}
+    void Sort(Data data, Compare compare) override;
 };
 
 
