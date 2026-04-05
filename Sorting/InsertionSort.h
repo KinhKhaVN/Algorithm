@@ -1,12 +1,12 @@
 #ifndef INSERTIONSORT_H
 #define INSERTIONSORT_H
 
-class InsertionSort
+#include "SortStragety.h"
+class InsertionSort: public SortStragety
 {
   public:
-
-  public:
-
+    InsertionSort(): SortStragety("Insertion Sort") {}
+    void Sort(Data data, Compare compare) override;
 };
 
 
