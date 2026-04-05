@@ -2,11 +2,15 @@
 #define UTILITY_H
 
 #include <functional>
+#include <vector>
 
-typedef std::function<bool (int, int)> Compare;
+class SortStragety;
 
-bool greater(int left, int right);
+typedef std::function<bool (long long, long long)> Compare;
+typedef std::vector<SortStragety *> SortAlgorithm;
 
-bool less(int left, int right);
+bool greater(long long left, long long right);
+
+bool less(long long left, long long right);
 
 #endif

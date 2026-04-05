@@ -1,12 +1,12 @@
 #include "Utility.h"
 
 
-bool greater(int left, int right)
+bool greater(long long left, long long right)
 {
   return left > right;
 }
 
-bool less(int left, int right)
+bool less(long long left, long long right)
 {
   return left < right;
 }
