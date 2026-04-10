@@ -14,7 +14,7 @@ void QuickSort::quickSort(Data &data, long long left, long long right, Compare c
 {
   if ( left >= right ) return;
 
-  int mid = ( left + right ) / 2;
+  int mid = ( left + right ) >> 1;
   int pivot = data[mid];
   long long  i = left;
   long long  j = right;
