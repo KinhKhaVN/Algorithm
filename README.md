@@ -8,8 +8,13 @@
 - [x] BubbleSort   : $O(n^2)$
 - [x] SelectionSort: $O(n^2)$
 - [x] InsertionSort: $O(n^2)$
-- [x] QuickSort    : $O(nlog(n))$
+- [x] QuickSort
+    - Best: $O(nlog(n))$
+    - Worsrt: $O(n^2)$
 - [x] MergeSort    : $O(nlog(n))$
-- [ ] HeapSort     : $O(nlog(n))$
+- [x] HeapSort     : $O(nlog(n))$
+- [x] ShakerSort
+    - Best: $O(nlogn)$
+    - Worsrt: $O(n^2)$
 
 
