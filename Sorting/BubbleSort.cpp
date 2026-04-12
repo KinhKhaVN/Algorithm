@@ -5,12 +5,19 @@
 
 void BubbleSort::Sort(Data data, Compare compare)
 {
-  size_t size = data.n;
   Data newData = data;
+
+  bubbleSort(newData, compare);
+
+  newData.Print();
+}
+
+void BubbleSort::bubbleSort(Data &data, Compare compare)
+{
+  size_t size = data.n;
   for (size_t i = 0; i < size - 1; i++)
     for (size_t j = 0; j < size - i - 1; j++)
-      if (compare( newData[j], newData[j + 1] ))
-        std::swap( newData[j], newData[j + 1] );
-  puts("Bubble Sort");
-  newData.Print();
+      if (compare( data[j], data[j + 1] ))
+        std::swap( data[j], data[j + 1] );
+
 }
