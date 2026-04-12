@@ -7,6 +7,8 @@ class SelectionSort: public SortStragety
   public:
     SelectionSort(): SortStragety("Selection Sort") {}
     void Sort(Data data, Compare compare) override;
+  private:
+    void selectionSort(Data &data, Compare compare);
 };
 
 
