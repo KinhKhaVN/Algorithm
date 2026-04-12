@@ -3,12 +3,13 @@
 void MergeSort::Sort(Data data, Compare compare)
 {
   Data newData = data;
-  mergeSort(newData, 0, data.n - 1);
+
+  mergeSort(newData, 0, data.n - 1, compare);
 
   newData.Print();
 }
 
-void MergeSort::Merge(Data &data, size_t left, size_t mid, size_t right)
+void MergeSort::Merge(Data &data, size_t left, size_t mid, size_t right, Compare compare)
 {
   size_t leftSize = mid - left + 1;
   size_t rightSize = right - mid;
@@ -25,7 +26,7 @@ void MergeSort::Merge(Data &data, size_t left, size_t mid, size_t right)
 
   while ( i < leftSize && j < rightSize )
   {
-    if ( leftData[i] <= rightData[j] )
+    if ( compare(leftData[i], rightData[j]) )
     {
       data[k] = leftData[i];
       i++;
@@ -42,15 +43,15 @@ void MergeSort::Merge(Data &data, size_t left, size_t mid, size_t right)
   while ( j < rightSize ) data[k++] = rightData[j++];
 }
 
-void MergeSort::mergeSort(Data &data, size_t left, size_t right)
+void MergeSort::mergeSort(Data &data, size_t left, size_t right, Compare compare)
 {
   if ( left < right )
   {
     size_t mid = (left + right) >> 1;
 
-    mergeSort(data, left, mid);
-    mergeSort(data, mid + 1, right);
+    mergeSort(data, left, mid, compare);
+    mergeSort(data, mid + 1, right, compare);
 
-    Merge(data, left, mid, right);
+    Merge(data, left, mid, right, compare);
   }
 }
