@@ -6,13 +6,13 @@
 #include <chrono>
 #include <random>
 
-#define MAX_SIZE 100000
+#define MAX_SIZE 20000
 
 class Data
 {
   public:
     size_t n;
-    int data[MAX_SIZE];
+    long long data[MAX_SIZE];
 
   public:
     Data();
@@ -23,11 +23,20 @@ class Data
       Init();
     }
 
+    Data(const size_t _n, int upperBound):
+      n(_n)
+  {
+    initDuplicate(upperBound);
+  }
+
 
     void Init();
+    void initDuplicate(int upperBound);
+    void Shuffle();
     void Print();
 
-    int & operator[] (size_t i);
+    long long & operator[] (size_t i);
+    long long getMax();
 };
 
 
