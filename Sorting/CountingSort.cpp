@@ -19,7 +19,7 @@ void CountingSort::countingSort(Data &data)
   for (size_t i = 0; i <= m; i++)
     C[i] = 0;
 
-  for ( size_t i = 0; i < data.n; i++)
+  for ( size_t i = 0; i < data.n; i++ )
     C[data[i]]++;
 
   size_t j = 0;
@@ -27,7 +27,7 @@ void CountingSort::countingSort(Data &data)
   {
     while ( C[i] > 0 )
     {
-      data[j] = C[i];
+      data[j] = i;
       C[i] -= 1;
       j    += 1;
     }
