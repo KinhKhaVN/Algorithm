@@ -40,7 +40,7 @@ BEGIN
       END;
 END;
 
-PROCEDURE
+PROCEDURE 
   MachDao(VAR X: TrangThaiBit; VAR R: boolean);
 BEGIN
   Writeln('----------Mach Dao---------');
