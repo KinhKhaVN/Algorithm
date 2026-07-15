@@ -40,9 +40,23 @@ BEGIN
       END;
 END;
 
+PROCEDURE 
+  MachDao(VAR X: TrangThaiBit; VAR R: boolean);
 BEGIN
+  Writeln('----------Mach Dao---------');
+
+  FOR i:= 1 to 2 DO
+      BEGIN
+        R := NOT X[i];
+        Writeln('X: ', X[i], ', R = ', R);
+      END;
+END;
+
+BEGIN
+  CLRSCR;
 
   MachNoiTiep(X, Y, R);
   MachSongSong(X, Y, R);
+  MachDao(X, R);
 
 END.
