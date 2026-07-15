@@ -6,12 +6,11 @@
 
 void BenchmarkEngine::Benchmark(Data data, SortAlgorithm algorithms)
 {
-  puts("----- KET QUA BENCHMARK -----"
-      );
+  puts("----- KET QUA BENCHMARK -----");
   for (auto algorithm : algorithms)
   {
     start = std::chrono::steady_clock::now();
-    algorithm->Sort(data, greater);
+    algorithm->Sort(data, less);
     end = std::chrono::steady_clock::now();
 
     std::chrono::duration<double> runningTime = end - start;
