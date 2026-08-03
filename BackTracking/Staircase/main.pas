@@ -2,54 +2,45 @@ PROGRAM Staicase;
 
 USES crt;
 
+CONST
+  n = 5;
 VAR
-  n: integer = 5;
-  dp: array[0..5] of integer;
+  dp, memo: array[0..n] of integer;
+  i: integer;
 
 PROCEDURE
   Init;
+  VAR
+    i: integer;
   BEGIN
+    for i := 0 to n do dp[i] := -1;
+
     dp[1] := 1;
     dp[2] := 2;
   END;
 
-{BUG}
 FUNCTION
-  Try(step, n: integer): integer;
+  Try(VAR dp: array of integer; i: integer): integer;
   VAR
-    res: integer = 0;
-    i: integer;
+    step: integer;
   BEGIN
-    if step > n then exit;
+    if (i = 1) OR (i = 2) then exit(i);
 
-    if step = n then
-      BEGIN
-        inc(res);
-        exit;
-      END;
+    if dp[i] <> -1 then exit(dp[i]);
 
-      for i := 1 to 2 do
-        BEGIN
-          if step + i > n then continue;
-          Try(step + i ,n);
-        END;
-      Try := res;
-  END;
+    step := Try(dp, i - 1) + Try(dp, i - 2);
 
-PROCEDURE
-  DynamicProgramming(VAR dp: array of integer);
-  VAR
-    i: integer;
-  BEGIN
-    for i := 3 to n do
-      dp[i] := dp[i - 1] + dp[i - 2];
+    dp[i] := step;
+
+    exit(step);
   END;
   
 BEGIN
 
   Init;
-  DynamicProgramming(dp);
+  Try(dp, n);
 
-  Writeln(dp[n]);
+  for i := 0 to n do
+    Writeln(dp[i]);
 
 END.
