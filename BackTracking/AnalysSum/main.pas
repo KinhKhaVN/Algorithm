@@ -170,6 +170,18 @@ PROCEDURE
     Writeln
   END;
 
+FUNCTION
+  Try1(m, v: integer): LongInt;
+  BEGIN
+    if m = 0 then
+      BEGIN
+        if v = 0 then exit(1)
+        else exit(0);
+      END;
+
+    if m > v then exit(Try1(m - 1, v))
+    else exit(Try1(m - 1, v) + Try1(m, v - m));
+  END;
 
 
 BEGIN
@@ -194,5 +206,9 @@ BEGIN
   Init(L);
   Solve(L);
   Print(L);
+
+  Writeln('Solve5');
+  Writeln(Try1(n, n));
+
 
 END.
