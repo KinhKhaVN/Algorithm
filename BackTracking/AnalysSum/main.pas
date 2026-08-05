@@ -10,6 +10,7 @@ TYPE
 
 VAR
   dp: Array2D;
+  F: Array2D;
   current, next: array[0..n] of integer;
   L: array[0..n] of integer;
   B: array[1..2, 0..n] of integer;
@@ -183,6 +184,35 @@ FUNCTION
     else exit(Try1(m - 1, v) + Try1(m, v - m));
   END;
 
+PROCEDURE
+  InitForTry2(VAR F: Array2D);
+  VAR
+    i, j: integer;
+  BEGIN
+    SetLength(F, n + 1, n + 1);
+
+    for i := 0 to n do
+      BEGIN
+        for j := 0 to n do F[i][j] := -1;
+      END;
+  END;
+
+FUNCTION
+  Try2(m, v: integer): LongInt;
+  BEGIN
+    if F[m][v]= -1 then {Chua tinh F[m][v] thi tinh F[m][v]}
+      BEGIN
+        if m = 0 then
+          BEGIN
+            if v = 0 then F[m][v] := 1 {Phan co so}
+            else F[m][v] := 0
+          END
+        else
+          if m > v then F[m][v] := Try2(m - 1, v)
+          else F[m][v] := Try2(m - 1, v) + Try2(m, v - m);
+      END;
+    Try2 := F[m][v];
+  END;
 
 BEGIN
 
@@ -210,5 +240,10 @@ BEGIN
   Writeln('Solve5');
   Writeln(Try1(n, n));
 
+  Writeln('Solve6');
+  InitForTry2(F);
+  Print(F);
+  Writeln(Try2(n, n));
 
+  Print(F);
 END.
