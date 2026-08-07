@@ -26,6 +26,9 @@
 *.mod
 *.smod
 
+# Pascal
+*.ppu
+
 # Compiled Static libraries
 *.lai
 *.la
