@@ -1,9 +1,9 @@
 PROGRAM Point2Dimension;
 
-{$UNITPATH ../}
+{$UNITPATH ../Units}
 
 USES
-    PointUnit in '../point.pas';
+    PointUnit in '../Units/PointUnit/Point2D/PointUnit.pas';
 
 VAR
   p: Point2D;
