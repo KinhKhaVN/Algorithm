@@ -1,7 +1,6 @@
 #ifndef SEARCH_H
 #define SEARCH_H
 
-
 class SearchStrategy
 {
   public:
@@ -11,8 +10,5 @@ class SearchStrategy
     virtual ~SearchStrategy(){}
     virtual bool Search(int A[], int n, int value) = 0;
 };
-
-
-
 
 #endif

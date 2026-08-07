@@ -1,12 +1,12 @@
 CXX = g++
 CXXFLAGS = -g -O2 -Wall -Wextra -std=c++14
 
-SHELL := powershell
+#SHELL := powershell
 
-all: main.exe
+all: main
 
-main.exe: main.o Benchmark.o LinearSearch.o BinarySearch.o
-	$(CXX) -o main.exe main.o Benchmark.o LinearSearch.o BinarySearch.o
+main: main.o Benchmark.o LinearSearch.o BinarySearch.o
+	$(CXX) -o main main.o Benchmark.o LinearSearch.o BinarySearch.o
 
 main.o: main.cpp Benchmark.h
 	$(CXX) $(CXXFLAGS) -c main.cpp
@@ -22,7 +22,7 @@ BinarySearch.o: BinarySearch.cpp BinarySearch.h
 
 
 run:
-	main.exe
+	./main
 
 clean:
-	rm *.o, main.exe
+	rm *.o main

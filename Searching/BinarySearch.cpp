@@ -1,7 +1,5 @@
 #include "BinarySearch.h"
 
-
-
 bool BinarySearch::Search(int A[], int n, int value)
 {
   return binarySearch(A, 0, n - 1, value);
