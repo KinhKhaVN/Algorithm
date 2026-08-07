@@ -53,7 +53,7 @@ BEGIN
 END;
 
 BEGIN
-  CLRSCR;
+
 
   MachNoiTiep(X, Y, R);
   MachSongSong(X, Y, R);
