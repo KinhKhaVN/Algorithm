@@ -1,13 +1,12 @@
+FLAGS = -g -gl -O1 -Co -CO
 
+all: main
 
-
-all: main.exe
-
-main.exe: main.pas
-	fpc  main.pas
+main: main.pas
+	fpc $(FLAGS) main.pas
 
 run:
-	./main.exe
+	./main
 
 clean:
-	rm *.o main.exe
+	rm *.o main
