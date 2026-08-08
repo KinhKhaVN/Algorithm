@@ -1,5 +1,5 @@
 {$mode objfpc}
-UNIT PointUnit;
+UNIT Point2DUnit;
 
 INTERFACE
   TYPE
