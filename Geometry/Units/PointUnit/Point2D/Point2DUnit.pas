@@ -1,13 +1,16 @@
 {$mode objfpc}
 UNIT Point2DUnit;
 
+
 INTERFACE
+  USES math;
   TYPE
     Point2D = class
     PUBLIC
       x: integer;
       y: integer;
     CONSTRUCTOR New(_x, _y: integer);
+    FUNCTION Distance(CONST p: Point2D): single;
     PROCEDURE Print;
     END;
 
@@ -17,6 +20,12 @@ IMPLEMENTATION
     BEGIN
       x := _x;
       y := _y;
+    END;
+
+  FUNCTION
+    Point2D.Distance(CONST p: Point2D): single;  
+    BEGIN
+      exit(sqrt(sqr(x - p.x) + sqr(y - p.y)));
     END;
 
   PROCEDURE
