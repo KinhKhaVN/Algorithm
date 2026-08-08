@@ -1,20 +1,22 @@
-PROGRAM Point2Dimension;
+PROGRAM Point;
 
 {$UNITPATH ../Units}
 
 USES
-    PointUnit in '../Units/PointUnit/Point2D/PointUnit.pas';
+    Point2DUnit in '../Units/PointUnit/Point2D/Point2DUnit.pas',
+    Point3DUnit in '../Units/PointUnit/Point3D/Point3DUnit.pas';
 
 VAR
-  p: Point2D;
-  newP: Point2D;
+  p2D: Point2D;
+  p3D: Point3D;
+
 
 BEGIN
-  p := Point2D.New(1, 1);
-  newP := Point2D.New(2, 2);
+  p2D := Point2D.New(1, 1);
+  p3D := Point3D.New(1, 2, 3);
 
   Writeln('Tadaaaaaaaaaaaaa');
-  p.Print;
-  newP.Print;
+  p2D.Print;
+  p3D.Print;
 
 END.
