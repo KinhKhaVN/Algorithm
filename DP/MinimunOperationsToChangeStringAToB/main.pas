@@ -10,8 +10,8 @@ VAR
 PROCEDURE
   Init;
   BEGIN
-    A := 'apple';
-    B := 'alpine';
+    A := 'abc';
+    B := 'ab';
   END;
 
 FUNCTION
@@ -44,7 +44,7 @@ PROCEDURE
       BEGIN
         for j := 0 to nb do
           BEGIN
-            if (i = 0) then 
+            if (i = 0) OR (j = 0) then 
             BEGIN
               dp[i][j] := i + j;
               continue;
@@ -76,8 +76,56 @@ PROCEDURE
       END;
   END;
 
+ PROCEDURE
+  Tracking;
+  VAR
+    i, j: integer;
+  BEGIN
+    i := length(A);
+    j := length(B);
+
+    while (i > 0) AND (j > 0) do
+      BEGIN
+        if A[i] = B[j] then
+          BEGIN
+            Writeln('Dont do anything');
+            Writeln(A[i], ' ', B[j]);
+            dec(i);
+            dec(j);
+            continue;
+          END;
+        {Change}
+        if (i = j) AND (A[i] <> B[j]) then
+          BEGIN
+            Writeln('Change ', A[i], ' to ', B[j]);
+            Writeln(A[i], ' ', B[j]);
+            dec(i);
+            dec(j);
+            continue;
+          END;
+
+        {Add}
+        if i < j then
+          BEGIN
+            Writeln('Add: ', B[j]);
+            Writeln(A[i], ' ', B[j]);
+            dec(j);
+            continue;
+          END;
+
+        if i > j then
+          BEGIN
+            Writeln('Delete: ', A[i]);
+            Writeln(A[i], ' ', B[j]);
+            dec(i);
+            continue;
+          END;
+      END;
+  END;
+
 BEGIN
   Init;
   Solve;
   Print;
+  Tracking;
 END.
