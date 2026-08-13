@@ -7,27 +7,28 @@
 
 int main (){
 
-        Matrix A(2, 2, 1);
+  Matrix A(2, 2, 1);
 
-        A[1][1] = 0;
+  A[1][1] = 0;
 
 
-        A.Print();
+  A.Print();
 
-        int t;
-        std::cin >> t;
+  int t;
+  std::cout << "Nhap so fibonacci can tinh: ";
+  std::cin >> t;
 
-        auto start = std::chrono::high_resolution_clock::now();
-        while (t--)
-        {
-                Matrix tmp = A.Pow(t - 1);
-                std::cout << "Fib(" << t + 1 << "): " << (tmp[0][0] + tmp[0][1]) << '\n';
-        }
-        auto stop = std::chrono::high_resolution_clock::now();
+  auto start = std::chrono::high_resolution_clock::now();
+  while (t--)
+  {
+    Matrix tmp = A.Pow(t - 1);
+    std::cout << "Fib(" << t + 1 << "): " << (tmp[0][0] + tmp[0][1]) << '\n';
+  }
+  auto stop = std::chrono::high_resolution_clock::now();
 
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+  auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-        std::cout << "Time taken by insertion sort: " << duration.count() << " milliseconds";
+  std::cout << "Time taken by insertion sort: " << duration.count() << " milliseconds\n";
 
-        return 0;
+  return 0;
 }
