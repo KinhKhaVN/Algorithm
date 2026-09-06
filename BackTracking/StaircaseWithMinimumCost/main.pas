@@ -4,8 +4,10 @@ USES crt;
 
 CONST
   n = 9;
+  LARGE = 10000;
 VAR
   dp: array[0..n] of integer;
+  p, path: array[0..n] of integer;
   cost: array[0..n] of integer = (0, 3, 5, 6, 7, 1, 5, 4, 3, 0);
   i: integer;
 
@@ -16,6 +18,9 @@ PROCEDURE
   BEGIN
     dp[0] := 0;
     dp[1] := cost[1];
+
+    FillChar(p, SizeOf(p), 0);
+    p[0] := -1;
   END;
 
 FUNCTION
@@ -40,16 +45,34 @@ FUNCTION
 FUNCTION
   Solve_From_1_To_K_Steps(VAR dp, cost: array of integer; CONST k: integer): integer;
   VAR
-    i, j: integer;
+    i, j, z: integer;
+    x: integer;
   BEGIN
     Init;
-    for i := 2 to n do
+    for i := 1 to n do
       BEGIN
+        dp[i] := LARGE;
         for j := 1 to k do
           BEGIN
-            if i - j >= 0 then dp[i] := Min(dp[i], dp[i - j] + cost[i]);
+            if i - j >= 0 then
+              BEGIN
+                if dp[i - j] + cost[i] < dp[i] then
+                  BEGIN
+                    dp[i] := dp[i - j] + cost[i];
+                    p[i] := i - j;
+                  END;
+
+              END;
           END;
       END;
+
+    x := n;
+    while x <> -1 do
+      BEGIN
+        Write(x, ' ');
+        x := p[x];
+      END;
+    Writeln;
   END;
 
 PROCEDURE
@@ -60,6 +83,13 @@ PROCEDURE
     Writeln;
   END;
 
+PROCEDURE
+  PrintPath(CONST path: array of integer);
+  BEGIN
+    for i := n downto 0 do
+      Write(path[i], ' ');
+    Writeln;
+  END;
 BEGIN
 
   Solve_From_1_To_2_Steps(dp, cost);
@@ -80,4 +110,8 @@ BEGIN
   Writeln;
   Writeln('Dp');
   Print(dp);
+
+  Writeln('-----Path-----');
+  Print(p);
+
 END.
